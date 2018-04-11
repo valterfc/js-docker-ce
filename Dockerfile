@@ -17,24 +17,24 @@ RUN apt-get update && apt-get install -y postgresql-client unzip xmlstarlet && \
 
 # Extract phantomjs, move to /usr/local/share/phantomjs, link to /usr/local/bin.
 # Comment out if phantomjs not required.
-RUN wget \
-    "https://bitbucket.org/ariya/phantomjs/downloads/\
-phantomjs-2.1.1-linux-x86_64.tar.bz2" \
-    -O /tmp/phantomjs.tar.bz2 --no-verbose && \
-    tar -xjf /tmp/phantomjs.tar.bz2 -C /tmp && \
-    rm -f /tmp/phantomjs.tar.bz2 && \
-    mv /tmp/phantomjs*linux-x86_64 /usr/local/share/phantomjs && \
-    ln -sf /usr/local/share/phantomjs/bin/phantomjs /usr/local/bin && \
-    rm -rf /tmp/*
-# In case you wish to download from a different location you can manually
-# download the archive and copy from resources/ at build time. Note that you
-# also # need to comment out the preceding RUN command
-#COPY resources/phantomjs*bz2 /tmp/phantomjs.tar.bz2
-#RUN tar -xjf /tmp/phantomjs.tar.bz2 -C /tmp && \
+#RUN wget \
+#    "https://bitbucket.org/ariya/phantomjs/downloads/\
+#phantomjs-2.1.1-linux-x86_64.tar.bz2" \
+#    -O /tmp/phantomjs.tar.bz2 --no-verbose && \
+#    tar -xjf /tmp/phantomjs.tar.bz2 -C /tmp && \
 #    rm -f /tmp/phantomjs.tar.bz2 && \
 #    mv /tmp/phantomjs*linux-x86_64 /usr/local/share/phantomjs && \
 #    ln -sf /usr/local/share/phantomjs/bin/phantomjs /usr/local/bin && \
 #    rm -rf /tmp/*
+# In case you wish to download from a different location you can manually
+# download the archive and copy from resources/ at build time. Note that you
+# also # need to comment out the preceding RUN command
+COPY resources/phantomjs*bz2 /tmp/phantomjs.tar.bz2
+RUN tar -xjf /tmp/phantomjs.tar.bz2 -C /tmp && \
+    rm -f /tmp/phantomjs.tar.bz2 && \
+    mv /tmp/phantomjs*linux-x86_64 /usr/local/share/phantomjs && \
+    ln -sf /usr/local/share/phantomjs/bin/phantomjs /usr/local/bin && \
+    rm -rf /tmp/*
 
 # Set default environment options.
 ENV CATALINA_OPTS="${JAVA_OPTIONS:--Xmx2g -XX:+UseParNewGC \
