@@ -32,11 +32,16 @@ services:
       - jrs_license:/usr/local/share/jasperreports/license 
       - jrs_customization:/usr/local/share/jasperreports/customization
   js_database:
-    image: postgres:9.4
+    image: postgres:9.6
     env_file: .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - /home/postgres/data:/var/lib/postgresql/data
 
 volumes:
   jrs_webapp:
     driver: local
   jrs_license:
   jrs_customization:
+

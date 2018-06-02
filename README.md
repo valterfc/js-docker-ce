@@ -55,7 +55,7 @@ TIBCO JasperReports&reg; Server
 in a Docker container.  This sample can be used as is 
 or modified to meet the needs of your environment. 
 The distribution can be downloaded from 
-[https://github.com/TIBCOSoftware/js-docker](#https://github.com/TIBCOSoftware/js-docker).
+[https://github.com/valterfc/js-docker-ce](#https://github.com/valterfc/js-docker-ce).
 
 This configuration has been certified using
 the PostgreSQL 9.4 database with JasperReports Server 6.3.0.
@@ -97,10 +97,10 @@ $ cp ~/Downloads/jasperreports-server-6.3.0-bin.zip resources/
 ## Cloning the repository
 
 Clone the JasperReports Server Docker github repository at 
-[https://github.com/TIBCOSoftware/js-docker](#https://github.com/TIBCOSoftware/js-docker):
+[https://github.com/valterfc/js-docker-ce](#https://github.com/valterfc/js-docker-ce):
 
 ```console
-$ git clone https://github.com/TIBCOSoftware/js-docker
+$ git clone https://github.com/valterfc/js-docker-ce
 $ cd js-docker
 ```
 
